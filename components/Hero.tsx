@@ -43,8 +43,8 @@ export default function Hero() {
         />
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 w-full section-padding">
+      {/* Main Content - Pushed down to avoid header collision */}
+      <div className="relative z-10 w-full pt-24 section-padding"> {/* Added pt-24 */}
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Column - Main Content */}
