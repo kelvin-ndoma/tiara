@@ -317,46 +317,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Testimonials - New Section */}
-      <section className="py-20 lg:py-28 bg-gradient-to-b from-dark to-primary text-white">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-block px-4 py-2 bg-white/10 rounded-full mb-4 backdrop-blur-sm">
-              <span className="text-sm font-semibold">Client Stories</span>
-            </div>
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6">Trusted by Visionary Brands</h2>
-            <p className="text-lg text-gray-300">
-              Hear from leaders who have transformed their businesses with intentional strategy.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={index} 
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-secondary/50 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="text-4xl mb-6 text-secondary">"</div>
-                <p className="text-lg mb-8 italic text-gray-200">"{testimonial.quote}"</p>
-                <div className="flex items-center">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-secondary">
-                    <Image
-                      src={testimonial.avatar}
-                      alt={testimonial.author}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <div className="font-bold">{testimonial.author}</div>
-                    <div className="text-sm text-gray-300">{testimonial.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* 6. Ideal Clients - Enhanced */}
       <section className="py-20 lg:py-28 bg-light">
