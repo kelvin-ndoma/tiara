@@ -1,138 +1,154 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, X, Calendar, Sparkles } from 'lucide-react'
+import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi'
 
-export default function Header() {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  // Handle scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
 
   const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { 
+      name: 'Services', 
+      href: '/services',
+      submenu: [
+        { name: 'Brand Strategy', href: '/services/brand-strategy' },
+        { name: 'Partnership Procurement', href: '/services/partnership-procurement' },
+        { name: 'Event Design & CX', href: '/services/event-design' },
+      ]
+    },
+    { name: 'Contact', href: '/contact' },
   ]
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' 
-        : 'bg-white/90 backdrop-blur-sm py-3'
-    }`}>
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
       <div className="container-custom">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link 
-            href="/" 
-            className="flex items-center gap-3 group"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full blur opacity-75 group-hover:opacity-100 transition-opacity" />
-              <Calendar className="relative w-9 h-9 text-white" />
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="h-10 w-10 bg-gradient-to-br from-secondary to-tertiary flex items-center justify-center rounded-lg group-hover:scale-105 transition-transform duration-300">
+              <span className="text-white font-bold text-lg">PSG</span>
             </div>
-            <div className="flex flex-col">
-              <span className="text-2xl font-bold text-gray-900 tracking-tight">
-                Tiara Events
-              </span>
-              <span className="text-xs text-primary-600 font-medium tracking-wide uppercase">
-                Premium Event Management
-              </span>
+            <div>
+              <h1 className="text-xl font-bold tracking-tight text-primary">Pulse Strategy Group</h1>
+              <div className="flex items-center space-x-1">
+                <div className="w-2 h-2 rounded-full bg-secondary"></div>
+                <div className="w-2 h-2 rounded-full bg-tertiary"></div>
+                <div className="w-2 h-2 rounded-full bg-accent"></div>
+                <p className="text-xs text-gray-500 ml-1">Strategy • Partnerships • Experiences</p>
+              </div>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navItems.map((item, index) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="relative px-5 py-2.5 text-gray-700 hover:text-primary-600 transition-colors font-medium group/nav"
-              >
-                <span className="relative z-10">{item.label}</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-primary-50 to-transparent rounded-lg opacity-0 group-hover/nav:opacity-100 transition-opacity" />
-                {index < navItems.length - 1 && (
-                  <span className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-4 bg-gray-200" />
+          <nav className="hidden lg:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <div key={item.name} className="relative">
+                {item.submenu ? (
+                  <div className="relative group">
+                    <button className="flex items-center space-x-1 text-gray-700 hover:text-secondary font-medium transition-colors py-2">
+                      <span>{item.name}</span>
+                      <FiChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                    </button>
+                    <div className="absolute top-full left-0 w-48 bg-white shadow-xl rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100 mt-1">
+                      {item.submenu.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-light hover:text-secondary transition-colors hover:pl-6 duration-200"
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="text-gray-700 hover:text-secondary font-medium transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-secondary after:transition-all after:duration-300 hover:after:w-full"
+                  >
+                    {item.name}
+                  </Link>
                 )}
-              </Link>
+              </div>
             ))}
-            
-            {/* CTA Button */}
-            <Link 
-              href="/contact" 
-              className="ml-4 px-6 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl hover:shadow-primary-200 hover:scale-105 transition-all duration-300 flex items-center gap-2 group/cta"
+            <Link
+              href="/contact"
+              className="bg-gradient-to-r from-secondary to-tertiary text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg hover:scale-105 transition-all duration-300"
             >
-              <Sparkles className="w-4 h-4 group-hover/cta:rotate-12 transition-transform" />
-              Book Now
-              <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary-600 to-primary-700 opacity-0 group-hover/cta:opacity-100 transition-opacity -z-10" />
+              Start a Conversation
             </Link>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-50 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden p-2 rounded-lg hover:bg-light transition-colors"
             aria-label="Toggle menu"
           >
-            <div className="relative w-6 h-6">
-              <span className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${
-                isMenuOpen ? 'rotate-45' : '-translate-y-2'
-              }`} />
-              <span className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${
-                isMenuOpen ? 'opacity-0' : 'opacity-100'
-              }`} />
-              <span className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-0.5 bg-gray-700 rounded-full transition-all duration-300 ${
-                isMenuOpen ? '-rotate-45' : 'translate-y-2'
-              }`} />
-            </div>
+            {isMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-300 ${
-          isMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
-        }`}>
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-4">
-            <div className="space-y-2">
-              {navItems.map((item) => (
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-lg">
+            <div className="container-custom py-6">
+              <nav className="flex flex-col space-y-4">
+                {navItems.map((item) => (
+                  <div key={item.name}>
+                    {item.submenu ? (
+                      <div>
+                        <button
+                          onClick={() => setIsServicesOpen(!isServicesOpen)}
+                          className="flex items-center justify-between w-full text-left text-gray-700 hover:text-secondary font-medium py-2"
+                        >
+                          <span>{item.name}</span>
+                          <FiChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+                        </button>
+                        {isServicesOpen && (
+                          <div className="pl-4 mt-2 space-y-2 border-l-2 border-secondary">
+                            {item.submenu.map((subItem) => (
+                              <Link
+                                key={subItem.name}
+                                href={subItem.href}
+                                className="block py-2 text-gray-600 hover:text-secondary transition-colors hover:pl-2 duration-200"
+                                onClick={() => setIsMenuOpen(false)}
+                              >
+                                {subItem.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="block text-gray-700 hover:text-secondary font-medium py-2 transition-colors"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </div>
+                ))}
                 <Link
-                  key={item.label}
-                  href={item.href}
-                  className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors group/mobile"
+                  href="/contact"
+                  className="bg-gradient-to-r from-secondary to-tertiary text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all text-center mt-4"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <span className="font-medium text-gray-700 group-hover/mobile:text-primary-600 transition-colors">
-                    {item.label}
-                  </span>
-                  <div className="w-6 h-6 flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover/mobile:bg-primary-400 transition-colors" />
-                  </div>
+                  Start a Conversation
                 </Link>
-              ))}
-              
-              {/* Mobile CTA */}
-              <Link
-                href="/contact"
-                className="block mt-4 p-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl font-semibold text-center shadow-lg hover:shadow-xl transition-shadow"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <div className="flex items-center justify-center gap-2">
-                  <Sparkles className="w-4 h-4" />
-                  Book Consultation
-                </div>
-              </Link>
+              </nav>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </header>
   )
 }
+
+export default Header

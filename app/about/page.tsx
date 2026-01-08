@@ -1,342 +1,452 @@
-import { Mail, Phone, MapPin, Clock, Sparkles, Users, Award, Heart } from 'lucide-react'
-import ContactForm from '@/components/ContactForm'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FiTarget, FiEye, FiCheckCircle, FiUsers, FiArrowRight, FiChevronRight, FiStar, FiHeart, FiGlobe, FiZap, FiTrendingUp } from 'react-icons/fi'
 
 export default function AboutPage() {
-  const teamMembers = [
-    {
-      name: 'Tiara Johnson',
-      role: 'Founder & Lead Planner',
-      bio: 'With over 10 years of experience in event management, Tiara brings creativity and precision to every event.',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b786d4d9?w=400&h=400&fit=crop&crop=face',
-      specialty: 'Creative Vision & Strategy'
-    },
-    {
-      name: 'Alex Morgan',
-      role: 'Venue Coordinator',
-      bio: 'Specializes in venue selection and logistics, ensuring every location is perfectly suited for your event.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
-      specialty: 'Logistics & Operations'
-    },
-    {
-      name: 'Maria Garcia',
-      role: 'Design Director',
-      bio: 'Creates stunning visual concepts that transform spaces into memorable experiences.',
-      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&crop=face',
-      specialty: 'Design & Styling'
-    },
-  ]
+  const brandOverview = {
+    name: "Pulse Strategy Group (PULSE)",
+    description: "Pulse Strategy Group (PULSE) is a brand strategy, partnerships, and experience design firm that helps companies translate vision into influence and impact. We work at the intersection of culture, commerce, and connection.",
+    services: "Helping brands clarify their message, build meaningful partnerships, and design experiences that leave lasting impact.",
+    audience: "We support founders, brands, organizations, and cultural leaders who want to grow with intention, create relevance, and execute at a higher level."
+  }
+
+  const missionVisionGoals = {
+    mission: "To help brands turn intention into impact by aligning strategy, partnerships, and experiences that connect meaningfully with people and cultures.",
+    vision: "To be a trusted strategic partner for our clients shaping culture — known for clarity, creativity, and execution that moves audiences and builds long-term value.",
+    goals: [
+      'Help brands articulate clear positioning and strategic direction that amplifies their call to action and drives engagement',
+      'Create partnership ecosystems that generate revenue and alignment',
+      'Design and execute elevated brand experiences from concept to completion',
+      'Serve as a long-term strategic partner, not just a service provider',
+      'Build a reputation for thoughtful, culture-forward work across industries'
+    ]
+  }
+
+  const founder = {
+    name: "Tiara Womack",
+    title: "Founder & Principal Strategist",
+    bio: [
+      "Tiara Womack is a brand strategist, partnerships consultant, and experience architect blending marketing, PR, and large-scale event production. Her work translates ideas into fully realized, impactful experiences by sitting at the intersection of strategy, storytelling, and execution.",
+      "With a rare ability to manage both the big picture and the details, Tiara leads end-to-end projects across brand strategy, partnerships, and live experiences, blending structure, intuition, creativity, and discipline.",
+      "She founded Pulse Strategy Group to help brands achieve clarity, alignment, and cultural relevance beyond simple visibility. Through strategic thinking and hands-on execution, she builds intentional, elevated, and impactful partnerships, campaigns, and experiences for clients.",
+      "A Georgia Southern University graduate (Public Relations) with a master's from Georgia State University (Marketing, focused on CRM), Tiara has a 10-year proven track record overseeing multi-million-dollar projects and high-profile events. She excels at leading high-performing teams, streamlining operations, and achieving measurable outcomes in fast-paced environments, using cultivated partnerships to drive efficiency, enhance productivity, and deliver exceptional value with a passion for connecting people."
+    ],
+    expertise: [
+      "Brand Strategy & Positioning",
+      "Partnership Architecture",
+      "Experience Design & Production",
+      "Strategic Planning & Execution",
+      "Team Leadership & Development"
+    ]
+  }
+
+  const business = {
+    whoWeAre: [
+      "Pulse Strategy Group is a strategic advisory and execution partner for brands looking to grow through clarity, collaboration, and experience-driven storytelling.",
+      "We operate as an extension of our clients' teams, offering strategic insight, creative direction, and operational support across brand strategy, partnerships, and experiential execution.",
+      "Our work bridges vision and logistics, ensuring that ideas don't just sound good — they actually work."
+    ],
+    beliefs: [
+      { 
+        title: "Strategy should be", 
+        description: "clear, actionable, and human",
+        icon: <FiTarget className="w-6 h-6" />
+      },
+      { 
+        title: "Partnerships should feel", 
+        description: "aligned, not transactional",
+        icon: <FiUsers className="w-6 h-6" />
+      },
+      { 
+        title: "Experiences should", 
+        description: "tell a story and serve a purpose",
+        icon: <FiGlobe className="w-6 h-6" />
+      },
+      { 
+        title: "Good design supports", 
+        description: "function, emotion, and flow",
+        icon: <FiZap className="w-6 h-6" />
+      }
+    ]
+  }
 
   const values = [
     {
-      icon: <Heart className="w-8 h-8" />,
-      title: 'Passion-Driven',
-      description: 'We pour our hearts into every event, treating each celebration as if it were our own.'
+      title: 'Clarity over chaos',
+      description: 'Clear, actionable strategies that provide direction and focus.',
+      icon: '✨'
     },
     {
-      icon: <Sparkles className="w-8 h-8" />,
-      title: 'Excellence',
-      description: 'We settle for nothing less than perfection in every detail, from concept to execution.'
+      title: 'Strategy before execution',
+      description: 'Thoughtful strategic planning precedes every great execution.',
+      icon: '🎯'
     },
     {
-      icon: <Users className="w-8 h-8" />,
-      title: 'Client Partnership',
-      description: 'We work collaboratively with you, ensuring your vision guides every decision.'
+      title: 'Relationships over transactions',
+      description: 'Building lasting partnerships based on mutual value and trust.',
+      icon: '🤝'
     },
     {
-      icon: <Award className="w-8 h-8" />,
-      title: 'Innovation',
-      description: 'We constantly explore new ideas and trends to create fresh, memorable experiences.'
+      title: 'Culture as a growth driver',
+      description: 'Understanding cultural trends is key to creating relevant, impactful work.',
+      icon: '🌱'
     },
+    {
+      title: 'Intention in every detail',
+      description: 'From big picture strategy to execution details, everything is deliberate.',
+      icon: '⚡'
+    }
+  ]
+
+  const stats = [
+    { label: "Projects Delivered", value: "100+" },
+    { label: "Partnership Value Generated", value: "$10M+" },
+    { label: "Brands Transformed", value: "50+" },
+    { label: "Years Experience", value: "10+" }
   ]
 
   return (
-    <div className="pt-24"> {/* Added pt-24 to push content down */}
+    <>
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-primary-50 to-white">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-primary-100 px-5 py-2.5 rounded-full mb-6 shadow-lg">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-500 rounded-full blur" />
-                  <Sparkles className="relative w-4 h-4 text-white" />
-                </div>
-                <span className="text-primary-700 font-semibold tracking-wide">
-                  Our Story Since 2012
-                </span>
-              </div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Creating <span className="text-primary-600">Unforgettable</span><br />
-                Moments Together
-              </h1>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                At Tiara Events Management, we believe that every event tells a unique story. 
-                Our mission is to bring your vision to life with meticulous planning, 
-                creative design, and flawless execution that exceeds expectations.
-              </p>
-              <Link href="/contact" className="btn-primary group">
-                <span>Start Your Journey With Us</span>
-                <Heart className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
-              </Link>
+      <section className="relative py-20 lg:py-32 overflow-hidden">
+        {/* Background with gradient overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=80"
+            alt="Strategy planning and creative thinking"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-dark/90 via-primary/80 to-dark/90" />
+          <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-secondary/30 to-transparent rounded-full -translate-y-1/4 translate-x-1/4" />
+          <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-accent/30 to-transparent rounded-full -translate-x-1/4 translate-y-1/4" />
+        </div>
+        
+        <div className="container-custom relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+              <span className="text-white text-sm font-medium">About Pulse Strategy Group</span>
             </div>
-            <div className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
-              <Image
-                src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop"
-                alt="Tiara Events team collaborating on event design"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            </div>
+            
+            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Where Vision Meets <span className="gradient-text">Impact</span>
+            </h1>
+            
+            <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">
+              We're a brand strategy, partnerships, and experience design firm that helps companies translate vision into influence and impact.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Our Story */}
-      <section className="section-padding">
+      {/* Brand Overview */}
+      <section className="py-20 lg:py-28 bg-white">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Our <span className="text-primary-600">Journey</span>
-              </h2>
-              <p className="text-gray-600 text-xl max-w-3xl mx-auto">
-                From a passionate vision to New York's premier event management service
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-xl">
-                <div className="aspect-[4/3] relative">
-                  <Image
-                    src="https://images.unsplash.com/photo-1519677100203-4f3c1f0d2d7e?w=600&q=80&fit=crop"
-                    alt="Elegant event setup showcasing our work"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+              <div>
+                <div className="inline-block px-4 py-2 bg-gradient-to-r from-secondary/10 to-tertiary/10 rounded-full mb-6">
+                  <span className="text-sm font-semibold text-secondary">Brand Overview</span>
+                </div>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h2 className="text-3xl lg:text-4xl font-bold mb-4">{brandOverview.name}</h2>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      {brandOverview.description}
+                    </p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-6 border border-gray-100">
+                    <p className="text-gray-700 font-medium mb-3">
+                      {brandOverview.services}
+                    </p>
+                    <p className="text-gray-600">
+                      {brandOverview.audience}
+                    </p>
+                  </div>
                 </div>
               </div>
               
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Where It All Began</h3>
-                <div className="space-y-4 text-gray-600">
-                  <p>
-                    Founded in 2012 by Tiara Johnson, what started as a passion for creating 
-                    beautiful celebrations has grown into a full-service event management company 
-                    serving discerning clients across the country.
-                  </p>
-                  <p>
-                    We've had the privilege of planning everything from intimate garden weddings 
-                    to large-scale corporate conferences, each with the same dedication to 
-                    excellence and attention to detail that defines our brand.
-                  </p>
-                  <p>
-                    Our philosophy is simple: every event should be as unique as the people 
-                    celebrating it. We work closely with our clients to understand their vision, 
-                    then bring it to life with creativity, professionalism, and care that 
-                    transforms dreams into reality.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Values */}
-      <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our <span className="text-primary-600">Core Values</span>
-            </h2>
-            <p className="text-gray-600 text-xl max-w-3xl mx-auto">
-              The principles that guide every decision we make and every event we create
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="group bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                <div className="p-3 bg-gradient-to-br from-primary-50 to-primary-100 rounded-xl inline-flex mb-6 group-hover:scale-110 transition-transform">
-                  <div className="text-primary-600">
-                    {value.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-primary-50 text-primary-700 px-5 py-2.5 rounded-full mb-6">
-              <Users className="w-5 h-5" />
-              <span className="font-semibold">Meet Our Team</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              The <span className="text-primary-600">Minds</span> Behind the Magic
-            </h2>
-            <p className="text-gray-600 text-xl max-w-3xl mx-auto">
-              A dedicated team of creative professionals committed to making your vision a reality
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="group bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                <div className="relative h-72 overflow-hidden">
+              <div className="relative">
+                <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src={member.image}
-                    alt={`${member.name} - ${member.role}`}
+                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
+                    alt="Team collaboration at Pulse Strategy Group"
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                  <div className="text-primary-600 font-semibold mb-3">{member.role}</div>
-                  <div className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full inline-block mb-4">
-                    {member.specialty}
-                  </div>
-                  <p className="text-gray-600">{member.bio}</p>
-                </div>
+                <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-2xl -z-10"></div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section within About Page */}
-      <section className="section-padding bg-gradient-to-br from-primary-50 to-white">
+      {/* Mission, Vision & Goals */}
+      <section className="py-20 lg:py-28 bg-gradient-to-b from-light to-white">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Let's <span className="text-primary-600">Connect</span>
-            </h2>
-            <p className="text-gray-600 text-xl max-w-3xl mx-auto">
-              Ready to begin planning your celebration? We're here to bring your vision to life
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="space-y-8">
-              <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
-                    <div className="p-3 bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg">
-                      <Mail className="w-6 h-6 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                      <a href="mailto:hello@tiaaraevents.com" className="text-gray-600 hover:text-primary-600 transition-colors">
-                        hello@tiaaraevents.com
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
-                    <div className="p-3 bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg">
-                      <Phone className="w-6 h-6 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                      <a href="tel:+15551234567" className="text-gray-600 hover:text-primary-600 transition-colors">
-                        (555) 123-4567
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
-                    <div className="p-3 bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg">
-                      <MapPin className="w-6 h-6 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Location</h3>
-                      <p className="text-gray-600">123 Event Street, Suite 100<br />New York, NY 10001</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
-                    <div className="p-3 bg-gradient-to-br from-primary-50 to-primary-100 rounded-lg">
-                      <Clock className="w-6 h-6 text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">Office Hours</h3>
-                      <p className="text-gray-600">Monday - Friday: 9AM - 6PM<br />Saturday: 10AM - 4PM</p>
-                    </div>
-                  </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-5xl font-bold mb-6">Our Guiding Principles</h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                The foundation of everything we do is built on clear purpose, strategic vision, and measurable goals.
+              </p>
+            </div>
+            
+            <div className="grid lg:grid-cols-3 gap-8 mb-16">
+              {/* Mission Card */}
+              <div className="group bg-white border border-gray-200 rounded-2xl p-8 hover:border-secondary hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-secondary to-tertiary rounded-xl flex items-center justify-center mb-6">
+                  <FiTarget className="w-7 h-7 text-white" />
                 </div>
+                <h3 className="text-2xl font-bold mb-4 text-primary">Mission</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {missionVisionGoals.mission}
+                </p>
               </div>
-
-              {/* Additional Info */}
-              <div className="bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">Why Choose Us</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span>Personalized event consultation</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span>Comprehensive planning services</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span>Extensive vendor network</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span>On-site event coordination</span>
-                  </li>
+              
+              {/* Vision Card */}
+              <div className="group bg-white border border-gray-200 rounded-2xl p-8 hover:border-tertiary hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-tertiary to-accent rounded-xl flex items-center justify-center mb-6">
+                  <FiEye className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-primary">Vision</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {missionVisionGoals.vision}
+                </p>
+              </div>
+              
+              {/* Goals Card */}
+              <div className="group bg-white border border-gray-200 rounded-2xl p-8 hover:border-accent hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-accent to-secondary rounded-xl flex items-center justify-center mb-6">
+                  <FiTrendingUp className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-primary">Goals</h3>
+                <ul className="space-y-4">
+                  {missionVisionGoals.goals.map((goal, index) => (
+                    <li key={index} className="flex items-start group/item">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-r from-gray-50 to-white flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 group-hover/item:scale-110 transition-transform">
+                        <div className="w-3 h-3 rounded-full bg-gradient-to-r from-accent to-secondary" />
+                      </div>
+                      <span className="text-gray-600 group-hover/item:text-primary transition-colors">
+                        {goal}
+                      </span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
             
-            {/* Contact Form */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Start Your Journey</h3>
-              <p className="text-gray-600 mb-8">
-                Fill out the form below and we'll get back to you within 24 hours to discuss your vision.
-              </p>
-              <ContactForm />
+            {/* Stats */}
+            <div className="bg-gradient-to-r from-primary to-dark text-white rounded-2xl p-8 lg:p-12">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                {stats.map((stat, index) => (
+                  <div key={index} className="text-center">
+                    <div className="text-3xl lg:text-4xl font-bold mb-2">{stat.value}</div>
+                    <div className="text-gray-300 text-sm font-medium">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      {/* Founder Section */}
+      <section className="py-20 lg:py-28 bg-white">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to Create <span className="text-primary-400">Magic</span> Together?
-            </h2>
-            <p className="text-gray-300 text-xl mb-10 max-w-3xl mx-auto">
-              Let's transform your vision into an unforgettable celebration that reflects your unique story.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-lg font-bold rounded-2xl shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300"
-            >
-              <Sparkles className="w-5 h-5" />
-              <span>Begin Your Planning Journey</span>
-            </Link>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-5xl font-bold mb-6">Meet Our Founder</h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                The visionary behind Pulse Strategy Group — combining strategic insight with creative execution.
+              </p>
+            </div>
+            
+            <div className="grid lg:grid-cols-3 gap-12">
+              <div className="lg:col-span-2">
+                <div className="space-y-8">
+                  <div>
+                    <h3 className="text-2xl lg:text-3xl font-bold mb-4">{founder.name}</h3>
+                    <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-secondary/10 to-tertiary/10 rounded-full mb-6">
+                      <span className="text-sm font-semibold text-primary">{founder.title}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="prose prose-lg max-w-none space-y-6">
+                    {founder.bio.map((paragraph, index) => (
+                      <p key={index} className="text-gray-600 leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                  
+                  {/* Expertise */}
+                  <div className="mt-8">
+                    <h4 className="text-xl font-bold mb-6 text-primary">Areas of Expertise</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {founder.expertise.map((skill, index) => (
+                        <div key={index} className="flex items-center group">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-secondary to-tertiary flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <FiCheckCircle className="w-4 h-4 text-white" />
+                          </div>
+                          <span className="text-gray-700 font-medium group-hover:text-primary transition-colors">
+                            {skill}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Founder Sidebar */}
+              <div className="space-y-8">
+                <div className="sticky top-24">
+                  <div className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl p-8 shadow-lg mb-8">
+                    <div className="relative h-64 w-64 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
+                      <Image
+                        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=400"
+                        alt={founder.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <h4 className="font-bold text-xl mb-2">{founder.name}</h4>
+                      <p className="text-gray-600 mb-6">{founder.title}</p>
+                      
+                      <div className="space-y-3">
+                        <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-secondary/10 to-tertiary/10 rounded-full">
+                          <FiStar className="w-4 h-4 text-secondary mr-2" />
+                          <span className="text-sm font-medium text-primary">Brand Strategy</span>
+                        </div>
+                        <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-tertiary/10 to-accent/10 rounded-full">
+                          <FiUsers className="w-4 h-4 text-tertiary mr-2" />
+                          <span className="text-sm font-medium text-primary">Partnerships</span>
+                        </div>
+                        <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-accent/10 to-secondary/10 rounded-full">
+                          <FiGlobe className="w-4 h-4 text-accent mr-2" />
+                          <span className="text-sm font-medium text-primary">Experience Design</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <Link
+                    href="/contact"
+                    className="group block w-full bg-gradient-to-r from-secondary to-tertiary text-white px-6 py-4 rounded-xl font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 text-center"
+                  >
+                    <span>Work With Tiara</span>
+                    <FiArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-    </div>
+
+      {/* About the Business */}
+      <section className="py-20 lg:py-28 bg-gradient-to-b from-light to-white">
+        <div className="container-custom">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-5xl font-bold mb-6">About Our Business</h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                How we work and what drives our approach to creating impact.
+              </p>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+              <div className="space-y-6">
+                <h3 className="text-2xl lg:text-3xl font-bold mb-4">Who We Are</h3>
+                {business.whoWeAre.map((paragraph, index) => (
+                  <p key={index} className="text-gray-600 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              
+              <div className="relative">
+                <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80"
+                    alt="Team collaboration and strategy"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-2xl -z-10"></div>
+              </div>
+            </div>
+            
+            {/* What We Believe */}
+            <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 lg:p-12 border border-gray-200 shadow-lg">
+              <div className="text-center mb-12">
+                <h3 className="text-2xl lg:text-3xl font-bold mb-4">What We Believe</h3>
+                <p className="text-gray-600 max-w-2xl mx-auto">
+                  Core principles that guide our approach to strategy, partnerships, and experiences.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {business.beliefs.map((belief, index) => (
+                  <div 
+                    key={index} 
+                    className="group bg-white border border-gray-200 rounded-xl p-6 hover:border-secondary hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 bg-gradient-to-br from-gray-50 to-white rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <div className="text-secondary">
+                        {belief.icon}
+                      </div>
+                    </div>
+                    <h4 className="font-bold mb-2 text-gray-900">{belief.title}</h4>
+                    <p className="text-gray-600">{belief.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="container-custom">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl lg:text-5xl font-bold mb-6">Our Core Values</h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                The principles that shape every decision, partnership, and outcome at Pulse Strategy Group.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+              {values.map((value, index) => (
+                <div 
+                  key={index} 
+                  className="group relative bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl p-8 hover:border-secondary hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+                >
+                  <div className="text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition-colors">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {value.description}
+                  </p>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   )
 }

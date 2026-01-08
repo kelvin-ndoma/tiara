@@ -1,102 +1,127 @@
 import Link from 'next/link'
-import { Calendar, Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react'
+import { FiFacebook, FiTwitter, FiLinkedin, FiInstagram, FiMail, FiMapPin, FiPhone } from 'react-icons/fi'
 
-export default function Footer() {
+const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container-custom section-padding">
-        <div className="grid md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg">
-                <Calendar className="w-6 h-6 text-white" />
+    <footer className="bg-dark text-white">
+      <div className="container-custom">
+        <div className="py-12 lg:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
+            {/* Brand Column */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="h-12 w-12 bg-gradient-to-br from-secondary to-tertiary flex items-center justify-center rounded-lg">
+                  <span className="text-white font-bold text-xl">PSG</span>
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold">Pulse Strategy Group</h2>
+                  <div className="flex items-center space-x-1 mt-1">
+                    <div className="w-2 h-2 rounded-full bg-secondary"></div>
+                    <div className="w-2 h-2 rounded-full bg-tertiary"></div>
+                    <div className="w-2 h-2 rounded-full bg-accent"></div>
+                    <p className="text-gray-300 text-sm ml-1">Strategy • Partnerships • Experiences</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <span className="text-2xl font-bold">Tiara Events</span>
-                <div className="text-primary-400 text-sm font-medium">Since 2012</div>
-              </div>
-            </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              Creating extraordinary events with passion, creativity, and meticulous attention to detail.
-            </p>
-            <div className="flex gap-4">
-              <a href="#" className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Quick Navigation</h3>
-            <ul className="space-y-3">
-              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
-              <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">Our Story</Link></li>
-              <li><Link href="/#services" className="text-gray-400 hover:text-white transition-colors">Services</Link></li>
-              <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-
-          {/* Event Focus */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">2026 Planning</h3>
-            <ul className="space-y-3 text-gray-400">
-              <li className="hover:text-white transition-colors cursor-pointer">Wedding Consultations</li>
-              <li className="hover:text-white transition-colors cursor-pointer">Corporate Event Planning</li>
-              <li className="hover:text-white transition-colors cursor-pointer">Milestone Celebrations</li>
-              <li className="hover:text-white transition-colors cursor-pointer">Venue Selection Assistance</li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Connect With Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary-400 mt-1 flex-shrink-0" />
-                <span className="text-gray-400">123 Event Street<br />New York, NY 10001</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-primary-400 flex-shrink-0" />
-                <a href="mailto:hello@tiaaraevents.com" className="text-gray-400 hover:text-white transition-colors">
-                  hello@tiaaraevents.com
+              <p className="text-gray-300 mb-6 max-w-md">
+                Helping brands translate vision into influence and impact through strategic brand positioning, 
+                partnership procurement, and end-to-end event design.
+              </p>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-300 hover:text-secondary transition-colors p-2 hover:bg-white/10 rounded-lg">
+                  <FiFacebook className="w-5 h-5" />
                 </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary-400 flex-shrink-0" />
-                <a href="tel:+15551234567" className="text-gray-400 hover:text-white transition-colors">
-                  (555) 123-4567
+                <a href="#" className="text-gray-300 hover:text-secondary transition-colors p-2 hover:bg-white/10 rounded-lg">
+                  <FiTwitter className="w-5 h-5" />
                 </a>
-              </li>
-            </ul>
-            <div className="mt-6 pt-6 border-t border-gray-800">
-              <div className="text-primary-400 text-sm font-semibold">
-                Now Accepting 2026 Bookings
+                <a href="#" className="text-gray-300 hover:text-secondary transition-colors p-2 hover:bg-white/10 rounded-lg">
+                  <FiLinkedin className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-gray-300 hover:text-secondary transition-colors p-2 hover:bg-white/10 rounded-lg">
+                  <FiInstagram className="w-5 h-5" />
+                </a>
+                <a href="mailto:tiara@pulsestrategygroup.com" className="text-gray-300 hover:text-secondary transition-colors p-2 hover:bg-white/10 rounded-lg">
+                  <FiMail className="w-5 h-5" />
+                </a>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-gray-400 text-center md:text-left">
-              <p>&copy; {currentYear} Tiara Events Management. All rights reserved.</p>
-              <p className="text-sm mt-1">Crafting timeless celebrations since 2012</p>
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-lg font-bold mb-6 flex items-center">
+                <div className="w-3 h-3 bg-gradient-to-r from-secondary to-tertiary rounded-full mr-2"></div>
+                Quick Links
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/" className="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-200">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-200">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-200">
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-gray-300 hover:text-white transition-colors hover:pl-2 duration-200">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
             </div>
-            <div className="flex items-center gap-6 text-sm text-gray-500">
-              <Link href="/privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
-              <div className="text-primary-400 font-medium">2026 Planning</div>
+
+            {/* Contact Info */}
+            <div>
+              <h3 className="text-lg font-bold mb-6 flex items-center">
+                <div className="w-3 h-3 bg-gradient-to-r from-tertiary to-accent rounded-full mr-2"></div>
+                Contact Info
+              </h3>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <FiMail className="w-4 h-4 text-gray-400 mr-3 mt-0.5" />
+                  <a href="mailto:tiara@pulsestrategygroup.com" className="text-gray-300 hover:text-white transition-colors">
+                    tiara@pulsestrategygroup.com
+                  </a>
+                </li>
+                <li className="flex items-start">
+                  <FiPhone className="w-4 h-4 text-gray-400 mr-3 mt-0.5" />
+                  <a href="tel:+1234567890" className="text-gray-300 hover:text-white transition-colors">
+                    +1 (234) 567-890
+                  </a>
+                </li>
+                <li className="flex items-start">
+                  <FiMapPin className="w-4 h-4 text-gray-400 mr-3 mt-0.5" />
+                  <span className="text-gray-300">Atlanta, GA</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-gray-800 mt-8 lg:mt-12 pt-8">
+            <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+              <p className="text-gray-400 text-sm">
+                © {currentYear} Pulse Strategy Group. All rights reserved.
+              </p>
+              <div className="flex space-x-6 text-sm">
+                <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
+                  Privacy Policy
+                </Link>
+                <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
+                  Terms of Service
+                </Link>
+                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
+                  Get in Touch
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -104,3 +129,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer
